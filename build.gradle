@@ -1,0 +1,24 @@
+def groovyVersion = GroovySystem.version.replaceAll(/\.\d+$/, '')
+
+allprojects {
+  group 'org.merscwog.gradle.plugins'
+  version '1.0.0' 
+}
+
+subprojects {
+  repositories {
+    jcenter()
+  }
+
+  apply plugin: 'java-gradle-plugin'
+  apply plugin: 'groovy'
+
+  configurations.all {
+    exclude module : 'groovy-all'
+  }
+
+  dependencies {
+    compile localGroovy()
+    testCompile "org.spockframework:spock-core:1.0-groovy-${groovyVersion}"
+  }
+}

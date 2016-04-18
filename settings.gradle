@@ -1,0 +1,5 @@
+rootProject.name = 'gradle-frc-plugin'
+
+['cpp', 'base', 'java'].each { String projectType ->
+  include "gradle-frc-${projectType}-plugin"
+}
